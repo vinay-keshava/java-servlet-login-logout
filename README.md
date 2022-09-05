@@ -4,12 +4,19 @@ Basic code snippets of Java Servlets for user registration and verifying the log
 
 
 mysql> desc login;
+
 +-------+-------------+------+-----+---------+-------+
+
 | Field | Type        | Null | Key | Default | Extra |
+
 +-------+-------------+------+-----+---------+-------+
+
 | user  | char(30)    | YES  |     | NULL    |       |
+
 | pass  | varchar(20) | YES  |     | NULL    |       |
+
 +-------+-------------+------+-----+---------+-------+
+
 2 rows in set (0.13 sec)
 
 
