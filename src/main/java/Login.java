@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
 		    PrintWriter pw=response.getWriter();
 		    ResultSet rs= pt.executeQuery();
 		    if(rs.next())
-		    		pw.write("Sucesssful Loginnnn");
+		    	pw.write("Welcome, "+username+"! You've successfully logged in!\n");
 		    else
 		    		pw.write("Wrong Password");
 		    	
