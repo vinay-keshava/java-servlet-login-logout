@@ -1,11 +1,13 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,7 @@ public class SignUp extends HttpServlet {
 //			String USER="root";
 //			String PASS="Vinay@123";			
 			try {
+				PrintWriter pw=response.getWriter();
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				String username=request.getParameter("name");
 				String password=request.getParameter("pass");
@@ -33,6 +36,10 @@ public class SignUp extends HttpServlet {
 			    pt.setString(1,username);
 			    pt.setString(2,password);
 			    pt.execute();
+			    
+			    pw.write("Please Login Now with the Same credentials provided");
+		        RequestDispatcher rd=request.getRequestDispatcher("/Login.html");  
+		        rd.forward(request, response);  
 			}
 	
 	catch(SQLException e){

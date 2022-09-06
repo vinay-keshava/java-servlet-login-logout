@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,17 +34,23 @@ public class Login extends HttpServlet {
 		    PrintWriter pw=response.getWriter();
 		    ResultSet rs= pt.executeQuery();
 		    if(rs.next())
+		    {
 		    	pw.write("Welcome, "+username+"! You've successfully logged in!\n");
+//		        RequestDispatcher rd=request.getRequestDispatcher("servlet2");  
+		    }
 		    else
-		    		pw.write("Wrong Password");
-		    	
+		    		{
+//		    	pw.write("Wrong Password");
+		    		
+		    		 pw.write("Please Login with correct credentials provided");
+				        RequestDispatcher rd=request.getRequestDispatcher("/index.html");  
+				        rd.forward(request, response);  
+		    		}    	
 		}
-
 catch(SQLException e){
 	System.out.println("Could not connect to the database"+e.getMessage());
 	e.printStackTrace();
 } catch (ClassNotFoundException e) {
-	// TODO Auto-generated catch block
 	e.printStackTrace();
 }	
 	
